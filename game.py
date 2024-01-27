@@ -2,6 +2,7 @@ from dataclasses import dataclass
 from component import Component
 from typing import List
 from player import Player
+from container import Deck
 
 
 @dataclass
@@ -11,4 +12,4 @@ class Game(Component):
 
 @dataclass
 class CardGame(Game):
-    pass
+    deck: Deck = None

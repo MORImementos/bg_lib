@@ -1,51 +1,24 @@
-from container import *
-from component import *
-import pytest
+from blackjack import deal_initial_cards, calculate_hand_value, create_blackjack_deck
+from container import Hand
+from player import Player
+from game import CardGame
+
+def main() -> None:
+    # blackjack test to determine current difficulty of using to implement a game
+    deck = create_blackjack_deck()
+    player_hand = Hand()
+    dealer_hand = Hand()
+    players = [Player("Player"), Player("Dealer")]
+    game = CardGame(players, deck)
+
+    deal_initial_cards(deck, player_hand, dealer_hand)
+
+    print(player_hand.get_components())
+    print(dealer_hand.get_components())
+
+
+
+
 
 if __name__ == '__main__':
-    # Container
-    container = Container()
-    # ContainerContainer
-    container_container = ContainerContainer()
-    # LoggingContainer
-    logging_container = LoggingContainer()
-
-    # Build a market
-    top_row = ContainerContainer()
-
-    card1 = StandardPlayingCard(name="Ace", suit="Hearts", value="A")
-    card2 = StandardPlayingCard(name="King", suit="Spades", value="K")
-    card3 = StandardPlayingCard(name="Queen", suit="Diamonds", value="Q")
-    generic_container = Container()
-    generic_container.add_component(card1)
-    generic_container.add_component(card2)
-
-    for component in generic_container.get_components():
-        print(component.get_info())
-
-    generic_container.remove_component(card1)
-
-    card_container = Container(allowable_component_types={Card})
-
-    # Adding cards
-    card_container.add_component(card1)
-    card_container.add_component(card2)
-
-    generic_component = Component()
-    # card_container.add_component(generic_component)  # This will raise ValueError
-
-    # Displaying components
-    for component in card_container.get_components():
-        print(component.get_info())
-
-    # Removing a component
-    card_container.remove_component(card2)
-
-    limited_container = Container(max_capacity=3)
-
-    limited_container.add_component(card1)
-    limited_container.add_component(card2)
-    limited_container.add_component(generic_component)
-
-
-
+    main()

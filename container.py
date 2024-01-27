@@ -59,6 +59,8 @@ class Container(AbstractContainer):
 
 @dataclass
 class ContainerContainer(AbstractContainer):
+    """Container with the purpose of holding other containers.
+    Can be used as a starting point for things like a tableau."""
     # Define which subtypes of containers are allowed
     allowable_container_types: Set[Type[Container]] = field(default_factory=set)
     containers: List[Container] = field(default_factory=list)
@@ -132,7 +134,7 @@ class CardContainer(Container):
 
 @dataclass
 class Deck(CardContainer):
-    shuffle_on_init: bool = field(default=False, init=False)
+    shuffle_on_init: bool = False
 
     def __post_init__(self):
         if self.shuffle_on_init:
@@ -173,12 +175,12 @@ class Deck(CardContainer):
 @dataclass
 class Hand(CardContainer):
     def organize_hand(self):
-        pass
+        pass  # pragma: no cover
 
 
 @dataclass
 class TokenContainer(Container):
-    pass
+    pass  # pragma: no cover
 
 
 @dataclass
@@ -194,8 +196,8 @@ class Board(ContainerContainer):
             self.init_hex_board()
         elif self.board_type in ["square", "default"]:
             self.init_square_board()
-        else:
-            self.init_board_from_json()
+        # else:
+        #     self.init_board_from_json()
 
     def init_hex_board(self):
         self.grid = []
