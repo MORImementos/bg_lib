@@ -1,0 +1,23 @@
+container
+    - generic class that is the basis of any object that holds components
+    - hand/deck as distinct from others due to unique functionality?
+component
+    - any item that is held within containers: cards, tokens, etc.
+    - cards as distinct?
+board
+    - is the board a container? or is the board just a representation of certain combinations of containers
+desired functionality:
+    - extendable base classes (cards with more than just suit/rank, containers that can hold more than one type of item, etc.)
+    - plugin system that works for most if not all games
+    - support for hex and non-hex style games
+    - undo/redo features
+    - well-implemented logging support
+player:
+    - information about the player
+    - hand / tableau if applicable
+game:
+    - holds overall information about the game, including board etc.
+actions:
+    - need to be implemented but unsure of best option to accommodate for multiple game types
+card_manager:
+    - sole purpose is to facilitate the movement of cards between containers
