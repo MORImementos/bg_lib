@@ -36,6 +36,7 @@ class Container(AbstractContainer):
     components: List[Component] = field(default_factory=list)
     # Sets limit on how many components can be within the given container.
     max_capacity: Optional[int] = None
+    name: str = None
 
     def add_component(self, component: Component):
         if self.allowable_component_types and not isinstance(component, tuple(self.allowable_component_types)):
@@ -65,8 +66,9 @@ class ContainerContainer(AbstractContainer):
     allowable_container_types: Set[Type[Container]] = field(default_factory=set)
     containers: List[Container] = field(default_factory=list)
     max_capacity_per_type: Optional[Dict[Type[Container], Optional[int]]] = None
+    name: str = None
 
-    def add_component(self, container: Container):
+    def add_component(self, container: AbstractContainer):
         if self.allowable_container_types and type(container) not in self.allowable_container_types:
             raise ValueError(f"Container type {type(container).__name__} not allowed.")
 

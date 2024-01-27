@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from typing import List
 from component import Card
 
+
 @dataclass
 class Action(Protocol):
     def execute(self):

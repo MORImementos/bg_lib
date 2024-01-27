@@ -1,4 +1,4 @@
-from blackjack import deal_initial_cards, calculate_hand_value, create_blackjack_deck
+from examples.blackjack import deal_initial_cards, create_blackjack_deck
 from container import Hand
 from player import Player
 from game import CardGame
